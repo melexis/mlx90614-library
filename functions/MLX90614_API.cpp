@@ -131,8 +131,28 @@ int MLX90614_GetIRdata2(uint8_t slaveAddr, uint16_t *ir2)
     }    
     
     return error;
-}  
+}
 
+int MLX90614_GetSlaveAddr(uint16_t slaveAddr, uint16_t *current_addr)
+{
+    int error = 0;
+
+    error = MLX90614_SMBusRead(slaveAddr, 0x2E, current_addr);
+
+    return error;
+}
+
+//--------------------------------------------------------------------------------
+int MLX90614_SetSlaveAddr(uint16_t slaveAddr, uint16_t current_addr)
+{
+    int error = 0;
+    do{
+        error = MLX90614_SMBusWrite(slaveAddr, 0x2E, 0x0000);
+        error = MLX90614_SMBusWrite(slaveAddr, 0x2E, current_addr);
+    }while(error != 0);
+
+    return error;
+}
 //------------------------------------------------------------------------------
 
 int MLX90614_GetEmissivity(uint8_t slaveAddr, float *emissivity)

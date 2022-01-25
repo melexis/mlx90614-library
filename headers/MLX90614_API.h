@@ -23,6 +23,8 @@
     int MLX90614_GetTo2(uint8_t slaveAddr, float *to2);
     int MLX90614_GetIRdata1(uint8_t slaveAddr, uint16_t *ir1);
     int MLX90614_GetIRdata2(uint8_t slaveAddr, uint16_t *ir2);
+    int MLX90614_GetSlaveAddr(uint16_t slaveAddr, uint16_t *current_addr);
+    int MLX90614_SetSlaveAddr(uint16_t slaveAddr, uint16_t current_addr);
     int MLX90614_GetEmissivity(uint8_t slaveAddr, float *emissivity);
     int MLX90614_SetEmissivity(uint8_t slaveAddr, float value);
     int MLX90614_GetFIR(uint8_t slaveAddr, uint8_t *fir);
